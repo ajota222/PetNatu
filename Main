@@ -1,3 +1,10 @@
+git init
+git add .
+git commit -m "Primeiro commit"
+git remote add origin https://github.com/222ajota/petnatu.git
+git branch -M main
+git push -u origin main
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
