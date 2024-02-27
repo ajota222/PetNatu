@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <style>
+        body {
+            font-family: 'Candara', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #aed581; /* Alteração para verde claro */
+            color: #004d40;
+            line-height: 1.6;
+            text-align: center;
+            background-position: left top, right top;
+            background-repeat: no-repeat, no-repeat;
+        }
+        <!-- Adicione o Firebase SDK (se já não estiver incluído) -->
+<script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js"></script>
+
+<script>
+  // Sua configuração do Firebase
+  const firebaseConfig = {
+    apiKey: "SuaApiKey",
+    authDomain: "SeuAuthDomain",
+    databaseURL: "SuaDatabaseURL",
+    projectId: "SeuProjectId",
+    storageBucket: "SeuStorageBucket",
+    messagingSenderId: "SeuMessagingSenderId",
+    appId: "SeuAppId",
+    measurementId: "SuaMeasurementId"
+  };
+
+  // Inicialize o Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const database = firebase.getDatabase(app);
+
+  // Função para enviar dados do formulário para o Firebase
+  function enviarDados() {
+    const email = document.getElementById('email').value;
+    const nome = document.getElementById('nome').value;
+    const telefone = document.getElementById('telefone').value;
+
+    // Referência para o local onde você deseja armazenar os dados (por exemplo, 'usuarios')
+    const usuariosRef = firebase.ref(database, 'usuarios');
+
+    // Armazene os dados no Realtime Database
+    firebase.push(usuariosRef, {
+      email: email,
+      nome: nome,
+      telefone: telefone
+    });
+
+    // Limpe o formulário após o envio
+    document.getElementById('email').value = '';
+    document.getElementById('nome').value = '';
+    document.getElementById('telefone').value = '';
+  }
+</script>
+
+
+
+        header {
+            background-image: url('https://agesbioactive.com/wp-content/uploads/2023/03/IMG_BLOG_31-03-23-scaled.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: bottom;
+            color: #fff;
+        }
+
+        header h1 {
+            color: #004d40;
+            font-family: 'Lobster', cursive;
+            font-size: 6em;
+            margin-bottom: 30px;
+        }
+
+        main {
+            padding: 20px;
+            text-align: justify;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-family: 'Lobster', cursive; /* Alteração para a mesma fonte do título */
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #004d40;
+        }
+
+        p {
+            font-family: 'Candara', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .reasons-section {
+            text-align: left;
+            margin-top: 30px;
+            background-color: #ffffff; /* Adição do quadrado branco */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .reasons-section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .reasons-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .reasons-section li {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            color: #333;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .reasons-section li:before {
+            content: '\2022'; /* Código do bullet point */
+            color: #004d40;
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+        }
+
+        .how-it-works-section,
+        .discount-section,
+        .contact-section {
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        .how-it-works-section h2,
+        .discount-section h2,
+        .contact-section h2 {
+            color: #004d40;
+            margin-bottom: 20px;
+        }
+
+        .how-it-works-text,
+        .contact-text {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .form-group {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            color: #004d40;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #004d40;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        .form-group button {
+            background-color: #004d40;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #004d40;
+            color: #fff;
+            text-align: center;
+            padding: 0.05em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Candara:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap">
+</head>
+
+<body>
+
+    <header>
+        <h1>PetNatú</h1>
+    </header>
+
+    <main>
+        <h2>Serviço de Alimentação Natural Personalizada para Cães e Gatos</h2>
+
+        <div class="reasons-section">
+            <p>
+                <strong>Por que alimentação natural?</strong><br>
+                A alimentação natural oferece diversos benefícios para a saúde dos seus animais de estimação, incluindo economia em relação às rações terapêuticas, controle de patologias metabólicas e crônicas, melhor hidratação, fortalecimento do sistema imunológico, redução de doenças de pele, pelagem mais saudável, menos distúrbios digestivos, peso saudável, carga glicêmica menor, fezes reduzidas e mais.
+            </p>
+            <ul>
+                <li> Economia em detrimento às rações terapêuticas.</li>
+                <li> Auxílio no controle de patologias metabólicas e crônicas.</li>
+                <li> 7x mais água que a ração seca. Essa água auxilia os rins e o sistema urinário porque mantém o animal hidratado, diferente da ração.</li>
+                <li> Auxilia o sistema imunológico.</li>
+                <li> Redução de doenças de pele.</li>
+                <li> Pelagem mais saudável.</li>
+                <li> Menos distúrbios digestivos.</li>
+                <li> Peso saudável.</li>
+                <li> Carga glicêmica menor.</li>
+                <li>  Fezes reduzidas, muito mais sequinhas e com odor discreto.</li>
+            </ul>
+        </div>
+
+        <div class="how-it-works-section">
+            <h2>Como Funciona?</h2>
+            <p class="how-it-works-text">
+                Primeiro você entra em contato conosco se inscrevendo abaixo! Após isso:<br>
+                <strong>1. Consulta e exames:</strong><br>
+                Com o cadastro feito e plano escolhido você e seu PET serão encaminhados para uma clínica parceira mais próxima de sua casa para triagem e realização de exames essenciais.<br>
+                <strong>2. Cardápio:</strong><br>
+                Com os dados da consulta em nossa plataforma, nosso nutricionista veterinário formulará o cardápio personalizado do seu bichinho e você terá acesso a ela pela nossa plataforma. Esse cardápio mudará de acordo com as suas necessidades e do seu PET.<br>
+                <strong>3. Acompanhamento:</strong><br>
+                Na plataforma você atualizará frequentemente algumas informações sobre seu animal para que acompanhemos seu desempenho. Também contamos com um chat para tirar dúvidas e um contato em casos de emergências relacionadas à dieta.<br>
+                <strong>4. Delivery:</strong><br>
+                Caso você não tenha tempo de preparar as refeições, as nossas marmitarias Pet's parceiras irão fazer isso pra você e entregar diretamente na sua casa.
+            </p>
+        </div>
+
+        <div class="discount-section">
+            <h2 class="discount-title">Garanta o Seu Desconto</h2>
+                            <form class="form-group">
+                <form onsubmit="enviarDados(); return false;">
+  <label for="email">E-mail:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="nome">Nome:</label>
+  <input type="text" id="nome" name="nome" required>
+
+  <label for="telefone">Telefone:</label>
+  <input type="tel" id="telefone" name="telefone" required>
+
+  <button type="submit">Enviar</button>
+  <p style="color: #004d40; margin-top: 10px; font-weight: bold;">Atendemos nacionalmente!</p>
+</form>
+
+            </form>
+        </div>
+
+        <!-- Nova seção de Contatos -->
+        <div class="contact-section">
+            <h2 class="contact-text">Contatos</h2>
+            <p class="contact-text">petnatusaude@gmail.com<br><a href="https://www.instagram.com/petnatu_" target="_blank" style="font-weight: bold; color: #333; text-decoration: none;">@petnatu_</a></p>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2024 PetNatú. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
+
+
